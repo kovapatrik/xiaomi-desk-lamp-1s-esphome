@@ -20,11 +20,12 @@ substitutions:
   # Project Name
   project_name: "kovapatrik.XiaomiDeskLamp1S"
   # Projection version denotes the release version of the yaml file, allowing checking of deployed vs latest version
-  project_version: "1.0.2"
+  project_version: "1.0.3"
 
 esphome:
   name: "${name}"
   friendly_name: "${friendly_name}"
+  name_add_mac_suffix: true
   project:
     name: ${project_name}
     version: ${project_version}
@@ -155,6 +156,34 @@ binary_sensor:
             transition_length: 0.2s
     filters:
       - delayed_off: 5ms
+
+  # Reset button on the bottom of the lamp. Pushing it for 4s will cause a pulse effect on the lamp and it will factory reset it.
+  - platform: gpio
+    id: reset_button
+    pin:
+      number: GPIO16
+      inverted: True
+    on_multi_click:
+      - timing:
+          - ON for at least 4s
+        then:
+          - repeat:
+              count: 3
+              then:
+                - light.turn_on:
+                    id: light1
+                    transition_length: 1s
+                - delay: 1s
+                - light.turn_off:
+                    id: light1
+                    transition_length: 1s
+                - delay: 1s
+          - light.control:
+              id: light1
+              brightness: 30%
+              transition_length: 1s
+              state: off
+          - button.press: "Reset"
 
 output:
   - platform: ledc
