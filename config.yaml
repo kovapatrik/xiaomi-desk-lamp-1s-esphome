@@ -132,7 +132,6 @@ sensor:
               # If Button is not pressed, change brightness
               - light.dim_relative:
                   id: light1
-                  transition_length: 0s
                   brightness_limits:
                     min_brightness: 2%
                   relative_brightness: !lambda |-
@@ -204,7 +203,7 @@ light:
   - platform: cwww
     id: light1
     name: "Light"
-    default_transition_length: 400ms
+    default_transition_length: 0s
     constant_brightness: true
     cold_white: output_cw
     warm_white: output_ww
