@@ -132,6 +132,7 @@ sensor:
               # If Button is not pressed, change brightness
               - light.dim_relative:
                   id: light1
+                  transition_length: 0s
                   brightness_limits:
                     min_brightness: 2%
                   relative_brightness: !lambda |-
