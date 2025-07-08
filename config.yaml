@@ -115,10 +115,10 @@ sensor:
       then:
         - if:
             condition:
-              # Check if Button is pressed while rotating
-              lambda: "return id(button).state;"
+              # Check if Knob is pressed while rotating
+              lambda: "return id(knob).state;"
             then:
-              # If Button is pressed, change CW/WW
+              # If Knob is pressed, change CW/WW
               - lambda: |-
                   auto min_temp = id(light1).get_traits().get_min_mireds();
                   auto max_temp = id(light1).get_traits().get_max_mireds();
@@ -143,7 +143,7 @@ sensor:
 binary_sensor:
   # Knob push-button
   - platform: gpio
-    id: button
+    id: knob
     pin:
       number: GPIO33
       inverted: True
@@ -151,8 +151,8 @@ binary_sensor:
     on_click:
       then:
         - light.toggle:
-          id: light1
-          transition_length: 0.2s
+            id: light1
+            transition_length: 0.2s
     filters:
       - delayed_off: 5ms
 
