@@ -18,7 +18,7 @@ substitutions:
   # Restore the light state upon reboot to state:
   restore_mode: RESTORE_DEFAULT_OFF
   # Project Name
-  project_name: "XiaomiDeskLamp1S"
+  project_name: "kovapatrik.XiaomiDeskLamp1S"
   # Projection version denotes the release version of the yaml file, allowing checking of deployed vs latest version
   project_version: "1.0.1"
 
