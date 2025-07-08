@@ -178,11 +178,6 @@ binary_sensor:
                     id: light1
                     transition_length: 1s
                 - delay: 1s
-          - light.control:
-              id: light1
-              brightness: 30%
-              transition_length: 1s
-              state: off
           - button.press: "Reset"
 
 output:
@@ -208,7 +203,7 @@ light:
   - platform: cwww
     id: light1
     name: "Light"
-    default_transition_length: 0s
+    default_transition_length: 400ms
     constant_brightness: true
     cold_white: output_cw
     warm_white: output_ww
