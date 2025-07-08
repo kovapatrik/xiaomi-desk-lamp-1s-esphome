@@ -149,18 +149,11 @@ binary_sensor:
       number: GPIO33
       inverted: True
       mode: INPUT_PULLDOWN
-    on_multi_click:
-      - timing:
-          - ON for at most 1s
-          - OFF for at least 0.2s
-        then:
-          - light.toggle:
-            id: light1
-            transition_length: 0.2s
-      - timing:
-          - ON for at least 4s
-        then:
-          - button.press: Reset
+    on_click:
+      then:
+        - light.toggle:
+          id: light1
+          transition_length: 0.2s
     filters:
       - delayed_off: 5ms
 
