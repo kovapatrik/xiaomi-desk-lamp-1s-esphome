@@ -185,12 +185,14 @@ output:
     pin: GPIO2
     id: output_cw
     power_supply: power
+    min_power: 1%
     frequency: 40000Hz
 
   - platform: ledc
     pin: GPIO4
     id: output_ww
     power_supply: power
+    min_power: 1%
     frequency: 40000Hz
 
 power_supply:
